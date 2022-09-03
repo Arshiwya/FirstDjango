@@ -11,15 +11,15 @@ pcategories = Category.objects.filter(status=True , parent=None)
 def home(request):
 
     cat = Category.objects.get(title='mens')
-    product_men = cat.product.filter(status = 'p')
+    product_men = cat.product.published()
 
     
     cat2 = Category.objects.get(title='womens')
-    product_women = cat2.product.filter(status = 'p')
+    product_women = cat2.product.published()
 
 
     cat3 = Category.objects.get(title='kids')
-    product_kids = cat3.product.filter(status = 'p')
+    product_kids = cat3.product.published()
 
 
 
@@ -59,8 +59,8 @@ def home(request):
 class ProductList(ListView):
    
     paginate_by = 6
-    queryset = Product.objects.filter(status='p')
-    template_name = 'products/products.html'
+    queryset = Product.objects.published()
+    template_name = 'products/products_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

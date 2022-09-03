@@ -5,6 +5,8 @@ from .models import Category , Product
 admin.site.site_header = 'My Django Panel'
 
 
+# admin panel actions
+
 def make_published(modeladmin , request , queryset):
 
         rows_updated = queryset.update(status='p')
@@ -33,7 +35,7 @@ def make_draft(modeladmin , request , queryset):
         modeladmin.message_user(request , message_bit)
 
 
-
+# ============================================================================================
 
 
 
@@ -49,11 +51,18 @@ def make_draft(modeladmin , request , queryset):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title' ,'get_thumbnail', 'status', 'price', 'created' ]
+    list_display = ['title' ,'get_thumbnail', 'status', 'price', 'created' , 'cat_to_str' ]
     list_filter = ['status']
     search_fields = ['title' , 'slug']
     prepopulated_fields ={ 'slug' :('title' , )}
     actions = [make_published , make_draft]
+
+
+    def cat_to_str(self , obj):
+        return ' , '.join([cat.title for cat in obj.categories.published()])
+
+    cat_to_str.short_description = 'categories'
+
 
 
 admin.site.register(Product , ProductAdmin)

@@ -11,7 +11,7 @@ urlpatterns = [
    path('' , home , name = 'home'),
    path('category/<slug:slug>/' , CategoryProductList.as_view() , name = 'category_page'),
    path('all/', ProductList.as_view() , name ='products'),
-   path('single/<slug:slug>/' , single_product  , name = 'single-product')
+   path('single/<slug:slug>/' , single_product  , name = 'single_product')
 
 ]
 

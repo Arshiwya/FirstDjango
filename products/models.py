@@ -4,12 +4,29 @@ from django.utils.html import format_html
 
 
 
+class ProductManager(models.Manager):
+    def published (self):
+
+        return self.filter(status = 'p')
+
+
+class CategoryManager(models.Manager):
+    def published (self):
+        return self.filter(status = True)
+
+
+
+
+
+
 class Category(models.Model):
     title = models.CharField(max_length=100 , null=False , blank=False)
     slug = models.SlugField(max_length=50 , unique=True)
     image = models.ImageField(upload_to='categories' ,null=True , blank=True)
     status = models.BooleanField(default=True)
     parent = models.ForeignKey('self' , on_delete=models.CASCADE ,related_name='subcat' ,blank=True, null=True)
+
+
 
 
 
@@ -28,6 +45,12 @@ class Category(models.Model):
     def get_thumbnail(self):
         return format_html(f"<img width='70' style='border-radius: 10px;' src='{self.image.url}'>")
     get_thumbnail.short_description = 'thumbnail'
+
+    objects = CategoryManager()
+
+
+
+
     
 
 
@@ -75,5 +98,14 @@ class Product(models.Model):
     def get_thumbnail(self):
         return format_html(f"<img width='70' style='border-radius: 10px;' src='{self.image.url}'>")
     get_thumbnail.short_description = 'thumbnail'
+
+
+
+
+
+
+
+
+    objects = ProductManager()
 
 

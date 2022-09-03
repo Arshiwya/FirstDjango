@@ -66,6 +66,19 @@
                     <div class="total">
                         <h4>Total: ${{product.price}}</h4>
                         <div class="main-border-button"><a href="#">Add To Cart</a></div>
+
+
+                    </div>
+
+                    <div>
+                        <ul>
+                            {% for cat in product.categories.published %}
+                             
+                             <a href="{% url 'products:category_page' cat.slug %}"><h5>#{{cat.title}}</h5></a>
+                             
+                                
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
