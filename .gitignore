@@ -20,6 +20,14 @@ db.sqlite3-journal
 *.py[cod]
 *$py.class
 .idea
+products/templates/admin/
+products/templates/registration/
+
+
+
+
+
+
 # C extensions
 *.so
 
