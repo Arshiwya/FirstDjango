@@ -51,7 +51,7 @@ def make_draft(modeladmin , request , queryset):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title' ,'get_thumbnail', 'status', 'price', 'created' , 'cat_to_str' ]
+    list_display = ['title' ,'get_thumbnail', 'status', 'price','admin', 'created' , 'cat_to_str' ]
     list_filter = ['status']
     search_fields = ['title' , 'slug']
     prepopulated_fields ={ 'slug' :('title' , )}

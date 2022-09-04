@@ -3,6 +3,7 @@ from   .models import Product , Category
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 
 
@@ -126,11 +127,45 @@ class CategoryProductList(ListView):
 
 def single_product(request , slug):
     product = get_object_or_404(Product , slug=slug , status='p')
+    admin = product.admin
+    print(admin)
+
     context = {
         "categories": pcategories,
+        "admin" :admin,
 
         "product": product
     }
 
     return render(request , 'products/single-product.html' , context=context)
 
+
+
+
+
+
+
+
+
+
+
+
+def adminpage(request , username):
+
+
+    
+    
+    admin = User.objects.get(username = username)
+    product_list = admin.admin.published()
+    paginator = Paginator(product_list , 6)
+    page = request.GET.get('p')
+    products =paginator.get_page(page)
+    context={
+    "admin" : admin ,
+    "categories": pcategories,
+    "products" : products,
+
+    }
+
+
+    return render(request , 'products/admin_page.html' ,  context)

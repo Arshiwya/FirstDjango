@@ -70,6 +70,7 @@
 
                     </div>
 
+
                     <div>
                         <ul>
                             {% for cat in product.categories.published %}
@@ -78,9 +79,18 @@
                              
                                 
                             {% endfor %}
+
+
                         </ul>
+
                     </div>
                 </div>
+                <br>
+                <div>
+                        <h4 >Added By <a href="{% url 'products:admin' admin.username %}">{{admin.username}}</a></h4 >
+
+                        
+                    </div>
             </div>
             </div>
         </div>

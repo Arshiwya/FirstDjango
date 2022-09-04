@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.html import format_html
+from django.contrib.auth.models import User
 
 
 
@@ -13,10 +14,6 @@ class ProductManager(models.Manager):
 class CategoryManager(models.Manager):
     def published (self):
         return self.filter(status = True)
-
-
-
-
 
 
 class Category(models.Model):
@@ -49,22 +46,6 @@ class Category(models.Model):
     objects = CategoryManager()
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Product(models.Model):
 
     STATUS_CHOICES = (
@@ -72,6 +53,8 @@ class Product(models.Model):
         ('p' , 'publish')
     )
 
+
+    admin = models.ForeignKey(User , null=True , on_delete = models.SET_NULL , related_name='admin')
     title = models.CharField(max_length=50 , null=False , blank=False)
     slug = models.SlugField(max_length=50 , unique=True )
     description =models.TextField()
@@ -107,5 +90,16 @@ class Product(models.Model):
 
 
     objects = ProductManager()
+
+
+
+# class User (models.Model):
+#     name = models.CharField(max_length=50 , null=False , blank= False)
+#     lastname = models.CharField(max_length=50 , null=False , blank=False)
+#     username = models.CharField(max_length=50 , null=False , blank=False , unique=True)
+
+
+
+
 
 
