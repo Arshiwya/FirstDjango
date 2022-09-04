@@ -49,58 +49,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-            {% for product in object_list %}
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="{% url 'products:single_product' product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single_product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single_product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <a href="{% url 'products:single_product' product.slug %}"><img src="{{ product.image.url }}" alt=""></a>
-                        </div>
-                        <div class="down-content">
-                            <h4>{{ product.title }}</h4>
-                            <span>${{ product.price }}</span>
-                            <ul class="stars">
-
-                                {% for star in product.Rstars  %}
-                                <li><i class="fa fa-star"></i></li>
-                                {% endfor %}
-
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                {% endfor %}
-            <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            {% if page_obj.has_previous %}
-                                <li class="active">
-                                    <a href="{% url 'products:products'  %}?page={{ page_obj.previous_page_number }}"><</a>
-                                </li>
-                            {% endif %}
-                            {% if page_obj.has_next %}
-                                <li class="active">
-                                    <a href="{% url 'products:products'  %}?page={{ page_obj.next_page_number }}">></a>
-                                </li>
-                            {% endif %}
-
-
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        {% block products %}{% endblock %}
+  
     </section>
     <!-- ***** Products Area Ends ***** -->
 
