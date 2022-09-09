@@ -1,5 +1,4 @@
 # FirstDjangoo
 
 
-
-helloo guyo
+helloo
