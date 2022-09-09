@@ -3,4 +3,4 @@ Django==4.1
 django-widget-tweaks==1.4.12
 Pillow==9.2.0
 sqlparse==0.4.2
-
+sss
