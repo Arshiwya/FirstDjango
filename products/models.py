@@ -82,6 +82,11 @@ class Product(models.Model):
         return format_html(f"<img width='70' style='border-radius: 10px;' src='{self.image.url}'>")
     get_thumbnail.short_description = 'thumbnail'
 
+    def cat_to_str(self):
+        return ' , '.join([cat.title for cat in self.categories.published()])
+
+    cat_to_str.short_description = 'categories'
+
 
 
 

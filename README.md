@@ -1,4 +1,3 @@
-# FirstDjangoo
+# MyFirstDjangoo
 
-
-helloo
+My first complete project in django

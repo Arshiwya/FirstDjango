@@ -7,10 +7,10 @@ from products.models import Product
 # Create your views here.
 
 
-@login_required
-def home(request):
+# @login_required
+# def home(request):
 
-	return render(request , 'registration/home.html')
+# 	return render(request , 'registration/home.html')
 
 
 

@@ -41,13 +41,13 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Products
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{% url 'accounts:home' %}" class="nav-link active">
                   <i class="fa fa-list nav-icon"></i>
                   <p>products by you</p>
                 </a>
@@ -62,10 +62,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{% url 'accounts:home' %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Widgets
+                My profile
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

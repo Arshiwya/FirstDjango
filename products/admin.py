@@ -58,10 +58,7 @@ class ProductAdmin(admin.ModelAdmin):
     actions = [make_published , make_draft]
 
 
-    def cat_to_str(self , obj):
-        return ' , '.join([cat.title for cat in obj.categories.published()])
 
-    cat_to_str.short_description = 'categories'
 
 
 
