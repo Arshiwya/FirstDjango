@@ -14,7 +14,6 @@ def home(request):
 
 
 
-
 class ProductList(LoginRequiredMixin , ListView):
 
 	queryset = Product.objects.all()

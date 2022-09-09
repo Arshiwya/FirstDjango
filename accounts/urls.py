@@ -38,7 +38,7 @@ urlpatterns = [
 
 
 urlpatterns+=[
-    path(''  , ProductList.as_view()  , name='home'),
+    path(''  , home  , name='home'),
 
 
 ]
