@@ -1,7 +1,7 @@
 
 from django.contrib.auth import views
 from django.urls import path
-from .views import  ProductList
+from .views import  ProductList  , ProductCreate
 app_name='accounts'
 
 
@@ -39,6 +39,7 @@ urlpatterns = [
 
 urlpatterns+=[
     path(''  , ProductList.as_view()  , name='home'),
+    path('product/create/'  , ProductCreate.as_view()  , name='product_create'),
 
 
 ]

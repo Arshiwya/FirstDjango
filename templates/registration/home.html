@@ -34,7 +34,7 @@
 	                      <td>{{product.admin}}</td>
 	                      <td><img src="{{product.image.url}}" width="100"></td>
 	                      <td>{{product.title}}</td>          
-	                      <td>{{product.description|truncatewords:"4"}}</td>
+	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
 	                      <td>{{product.cat_to_str}}</td>
 	                      <td>{{product.price}}</td>	                     
 	                      <td>
