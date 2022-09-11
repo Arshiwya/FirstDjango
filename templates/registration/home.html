@@ -1,11 +1,19 @@
 {% extends 'registration/base.html' %}
 
 {% block page-title %} {{user.first_name}} {% endblock %}
+
+
+
+{% if  user.is_staff %}
 {% block title %}My Products{% endblock %}
-
-
+{% endif %}
 
 {% block main %}
+
+
+
+
+
 
 <div class="row">
           <div class="col-12">
@@ -19,7 +27,6 @@
                       <th>Admin</th>
                       <th>image</th>
                       <th>title</th>
-                      
                       <th>description</th>
                       <th>categories</th>
                       <th>price</th>
@@ -59,7 +66,7 @@
 	                      <td>{{product.admin}}</td>
 	                      <td><img src="{{product.image.url}}" width="100"></td>
 	                      <td>{{product.title}}</td>          
-	                      <td>{{product.description|truncatewords:"4"}}</td>
+	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
 	                      <td>{{product.cat_to_str}}</td>
 	                      <td>{{product.price}}</td>	                     
 	                      <td>
