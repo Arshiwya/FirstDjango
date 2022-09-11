@@ -18,7 +18,9 @@ class ProductList(LoginRequiredMixin , ListView):
 
 	queryset = Product.objects.all()
 	template_name = 'registration/home.html'
-	
+
+
+
 
 
 class ProductCreate(LoginRequiredMixin , CreateView):
