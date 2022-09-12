@@ -26,9 +26,11 @@
 	<div class="col-6">
 		{{form.title|as_crispy_field}}
 	</div>
+	{% if user.is_superuser %}
 	<div class="col-6">
 		{{form.admin|as_crispy_field}}
 	</div>
+	{% endif %}
 	<div class="col-6">
 		{{form.slug|as_crispy_field}}
 	</div>
@@ -40,7 +42,11 @@
 	</div>
 	<div class="col-6">
 		{{form.price|as_crispy_field}}
+		{% if user.is_superuser %}
+
 		{{form.status|as_crispy_field}}
+		{% endif %}
+
 
 	</div>
 	<div class="col-12">

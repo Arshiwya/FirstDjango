@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 class User(AbstractUser):
-
+	is_admin = models.BooleanField(default = False , verbose_name = 'admin')
 	special = models.DateTimeField(default = timezone.now  , verbose_name='special until ' )
 	 
 

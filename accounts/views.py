@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .mixins import FieldMixin , FormValidMixin
 from django.views.generic import ListView , CreateView
 from products.models import Product
 
@@ -23,19 +24,8 @@ class ProductList(LoginRequiredMixin , ListView):
 
 
 
-class ProductCreate(LoginRequiredMixin , CreateView):
+class ProductCreate(LoginRequiredMixin,FormValidMixin,FieldMixin  , CreateView):
 	model = Product
-	fields = [
-	"admin",
-"title",
-"slug",
-"description",
-"categories",
-"price",
-"image",
-"status",
-"stars",
-
-	]
+	
 
 	template_name = 'registration/product-create-update.html'

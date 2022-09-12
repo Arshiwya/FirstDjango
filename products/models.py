@@ -64,7 +64,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products')
     created = models.DateTimeField(auto_now_add=True)
     #published = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=1 , default='p' , choices=STATUS_CHOICES)
+    status = models.CharField(max_length=1 , default='d' , choices=STATUS_CHOICES)
     stars = models.SmallIntegerField(default=0)
 
 
