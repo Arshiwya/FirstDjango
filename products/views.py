@@ -3,7 +3,7 @@ from   .models import Product , Category
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.views.generic import ListView
-from django.contrib.auth.models import User
+from accounts.models import User
 
 
 

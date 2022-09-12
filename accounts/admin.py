@@ -1,3 +1,18 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 
-# Register your models here.
+
+UserAdmin.list_display += ('is_special_user' , )
+
+
+UserAdmin.fieldsets[2][1]['fields'] = (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                    "special",
+                ),
+
+admin.site.register(User , UserAdmin)
