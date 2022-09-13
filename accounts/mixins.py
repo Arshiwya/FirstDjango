@@ -1,4 +1,6 @@
 from django.http import Http404
+from django.shortcuts import  get_object_or_404
+from products.models import Product
 
 class FieldMixin():
 
@@ -31,3 +33,21 @@ class FormValidMixin():
 
 
 		return  super().form_valid(form)
+
+
+
+
+class AdminAccessMixin():
+
+	def dispatch(self, request,slug,*args, **kwargs):
+		product = get_object_or_404(Product , slug = slug)
+
+		if product.admin == request.user  or request.user.is_superuser:
+			return super().dispatch(request, *args, **kwargs)
+
+		else:
+			raise Http404("you havent access")
+			
+
+
+		

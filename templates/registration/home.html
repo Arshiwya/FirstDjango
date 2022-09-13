@@ -37,9 +37,10 @@ Products by {{user.get_full_name}}
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
+                    	<th>title</th>
                       <th>Admin</th>
                       <th>image</th>
-                      <th>title</th>
+                      
                       <th>description</th>
                       <th>categories</th>
                       <th>price</th>
@@ -51,9 +52,10 @@ Products by {{user.get_full_name}}
 	                    {% if user.is_staff %}
 	                    {% for product in object_list %}
 	                    <tr>
+	                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td> 
 	                      <td>{{product.admin}}</td>
 	                      <td><img src="{{product.image.url}}" width="100"></td>
-	                      <td>{{product.title}}</td>          
+	                               
 	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
 	                      <td>{{product.cat_to_str}}</td>
 	                      <td>{{product.price}}</td>	                     
@@ -76,9 +78,10 @@ Products by {{user.get_full_name}}
 	                    {% for product in object_list %}
 	                    {% if user.get_full_name == product.admin.get_full_name %}
 	                    <tr>
+	                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td>    
 	                      <td>{{product.admin}}</td>
 	                      <td><img src="{{product.image.url}}" width="100"></td>
-	                      <td>{{product.title}}</td>          
+	                            
 	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
 	                      <td>{{product.cat_to_str}}</td>
 	                      <td>{{product.price}}</td>	                     
