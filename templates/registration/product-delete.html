@@ -1,0 +1,35 @@
+{% extends 'registration/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block page-title %} create product{% endblock %}
+
+
+{% block title %} Add product {% endblock %}
+
+
+
+
+
+{% block main %}
+<div class="col-md-8 mx-auto">
+            <!-- general form elements -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title mb-0" >Delete Product</h3>
+              </div>
+
+<div class="card-body">
+    <form method="post">{% csrf_token %}
+    <p class="text-center ">Are you sure you want to delete "{{ object }}" from "{{object.admin.get_full_name}}"?</p>
+    {{ form }}
+    <input type="submit" value="Delete" class="btn btn-danger">
+    
+</form>
+
+
+</div>
+</div>
+
+
+{% endblock %}

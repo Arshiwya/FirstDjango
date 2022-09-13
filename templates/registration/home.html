@@ -68,7 +68,10 @@ Products by {{user.get_full_name}}
 	                      		<span class="badge badge-danger" >Draft</span>
 
 	                      	{% endif %}
+	                      	
+	                      		<a href="{% url 'accounts:product_delete' product.slug %}" class="badge text-danger">delete this product</a>
 
+	                      	
 	                      </td>
 	                      </tr>
 	                    {% endfor %}
@@ -89,15 +92,19 @@ Products by {{user.get_full_name}}
 	                      	{% if product.status == 'p' %}
 	                      		<span class="badge badge-success" >Published</span>
 	                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
+
 	                      	{% else %}
 
 	                      		<span class="badge badge-danger" >Draft</span>
 
 	                      	{% endif %}
 
+	                      	
+
 	                      </td>
 	                      </tr>
 	                      {% endif %}
+	                      
 	                    {% endfor %}
 
 
