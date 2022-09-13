@@ -30,10 +30,12 @@ Products by {{user.get_full_name}}
 
 <div class="row">
           <div class="col-12">
+          	
             <div class="card">
               
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
+              	
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
@@ -49,76 +51,85 @@ Products by {{user.get_full_name}}
                   </thead>
                   <tbody>
                     
-	                    {% if user.is_staff %}
-	                    {% for product in object_list %}
-	                    <tr>
-	                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td> 
-	                      <td>{{product.admin}}</td>
-	                      <td><img src="{{product.image.url}}" width="100"></td>
-	                               
-	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
-	                      <td>{{product.cat_to_str}}</td>
-	                      <td>{{product.price}}</td>	                     
-	                      <td>
-	                      	{% if product.status == 'p' %}
-	                      		<span class="badge badge-success" >Published</span>
-	                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
-	                      	{% else %}
-
-	                      		<span class="badge badge-danger" >Draft</span>
-
-	                      	{% endif %}
-	                      	
-	                      		<a href="{% url 'accounts:product_delete' product.slug %}" class="badge text-danger">delete this product</a>
-
-	                      	
-	                      </td>
-	                      </tr>
-	                    {% endfor %}
 	                    
-	                    {% else %}
 
-	                    {% for product in object_list %}
-	                    {% if user.get_full_name == product.admin.get_full_name %}
-	                    <tr>
-	                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td>    
-	                      <td>{{product.admin}}</td>
-	                      <td><img src="{{product.image.url}}" width="100"></td>
-	                            
-	                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
-	                      <td>{{product.cat_to_str}}</td>
-	                      <td>{{product.price}}</td>	                     
-	                      <td>
-	                      	{% if product.status == 'p' %}
-	                      		<span class="badge badge-success" >Published</span>
-	                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
+					                    {% if user.is_staff %}
+					                    {% for product in object_list %}
+					                    <tr>
+					                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td> 
+					                      <td>{{product.admin}}</td>
+					                      <td><img src="{{product.image.url}}" width="100"></td>
+					                               
+					                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
+					                      <td>{{product.cat_to_str}}</td>
+					                      <td>{{product.price}}</td>	                     
+					                      <td>
+					                      	{% if product.status == 'p' %}
+					                      		<span class="badge badge-success" >Published</span>
+					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
+					                      	{% else %}
 
-	                      	{% else %}
+					                      		<span class="badge badge-danger" >Draft</span>
 
-	                      		<span class="badge badge-danger" >Draft</span>
+					                      	{% endif %}
+					                      	
+					                      		<a href="{% url 'accounts:product_delete' product.slug %}" class="badge text-danger">delete this product</a>
 
-	                      	{% endif %}
+					                      	
+					                      </td>
+					                      </tr>
+					                    {% endfor %}
+					                    
+					                    {% else %}
 
-	                      	
+					                    {% for product in object_list %}
+					                    {% if user.get_full_name == product.admin.get_full_name %}
+					                    <tr>
+					                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td>    
+					                      <td>{{product.admin}}</td>
+					                      <td><img src="{{product.image.url}}" width="100"></td>
+					                            
+					                      <td>{{product.description|striptags|truncatewords:"4"}}</td>
+					                      <td>{{product.cat_to_str}}</td>
+					                      <td>{{product.price}}</td>	                     
+					                      <td>
+					                      	{% if product.status == 'p' %}
+					                      		<span class="badge badge-success" >Published</span>
+					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
 
-	                      </td>
-	                      </tr>
-	                      {% endif %}
-	                      
-	                    {% endfor %}
+					                      	{% else %}
+
+					                      		<span class="badge badge-danger" >Draft</span>
+
+					                      	{% endif %}
+
+					                      	
+
+					                      </td>
+					                      </tr>
+					                      {% endif %}
+					                      
+					                    {% endfor %}
 
 
-	                    {% endif %}
-                    
+					                    {% endif %}
+
+	                    
                     
                     
                   </tbody>
                 </table>
+
+                
+                    
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+
           </div>
+
         </div>
 
 
