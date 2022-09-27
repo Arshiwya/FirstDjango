@@ -47,13 +47,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'accounts:home' %}" class="nav-link active">
+                <a href="{% url 'accounts:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'product_update' %}active{% endif %}">
                   <i class="fas fa-list nav-icon"></i>
                   <p>products by you</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'accounts:product_create' %}" class="nav-link">
+                <a href="{% url 'accounts:product_create' %}" class="nav-link {% if request.resolver_match.url_name == 'product_create' %}active{% endif %}">
                   <i class="fas fa-upload nav-icon"></i>
                   <p>add new product</p>
                 </a>

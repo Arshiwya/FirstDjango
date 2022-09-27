@@ -3,56 +3,7 @@
 
 {% block title %}{{ category.title }}{% endblock %}
 {% block main %}
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="{% static 'products/assets/images/logo.png' %}">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-    <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url 'products:home' %}" >Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'products:products' %}">Products</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Categories</a>
-                                <ul>
-                                    {% for cat in categories %}
-                                        <li><a href="{% url 'products:category_page' cat.slug %}">{{ cat.title }}</a></li>
-                                    {% endfor %}
-
-
-                                </ul>
-                            </li>
-
-                            {% if subcats %}
-                                <li class="submenu">
-                                <a href="javascript:;">sub-categories</a>
-                                <ul>
-                                    {% for c in subcats %}
-                                        <li><a href="{% url 'products:category_page' c.slug %}">{{ c.title }}</a></li>
-                                    {% endfor %}
-
-
-                                </ul>
-                            </li>
-                            {% endif %}
-
-                            <li class="scroll-to-section"><a href="index.html">About us</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    </head>
+                                
     <body>
 
     <!-- ***** Preloader Start ***** -->

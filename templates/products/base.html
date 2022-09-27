@@ -42,10 +42,10 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
     <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url 'products:home' %}" >Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'products:products' %}">Products</a></li>
+                            <li class="scroll-to-section"><a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'products:home' %}" >Home</a></li>
+                            <li class="scroll-to-section"><a  class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="{% url 'products:products' %}">Products</a></li>
                             <li class="submenu">
-                                <a href="javascript:;">Categories</a>
+                                <a class="{% if request.resolver_match.url_name == 'category_page' %}active{% endif %}" href="javascript:;">Categories</a>
                                 <ul>
                                     {% for cat in categories %}
                                         <li><a href="{% url 'products:category_page' cat.slug %}">{{ cat.title }}</a></li>
@@ -119,8 +119,8 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
-
-                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+<!--                                 {{request.resolver_match}}
+ -->                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -131,6 +131,8 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
+
+
     </footer>
     <script src="{% static 'products/assets/js/jquery-2.1.0.min.js' %}"></script>
 
