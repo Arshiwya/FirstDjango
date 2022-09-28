@@ -51,7 +51,10 @@ class Product(models.Model):
 
     STATUS_CHOICES = (
         ('d' ,'draft'),
-        ('p' , 'publish')
+        ('p' , 'publish'),
+        ('i','investigation'),
+        ('b','backed'),
+
     )
 
 

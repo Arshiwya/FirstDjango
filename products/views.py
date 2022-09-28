@@ -2,8 +2,9 @@ from django.shortcuts import render , get_list_or_404 , get_object_or_404
 from   .models import Product , Category
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView , DetailView
 from accounts.models import User
+from accounts.mixins import AdminAccessMixin
 
 
 
@@ -115,6 +116,32 @@ class CategoryProductList(ListView):
         context["categories"] = pcategories
         context["category"] = category
         return context
+
+
+class ProductPreview(AdminAccessMixin , DetailView):
+    template_name = 'products/single-product.html'
+    def get_object(self):
+        global product
+        pk = self.kwargs.get('pk')
+        product = get_object_or_404(Product , pk=pk)
+
+        return get_object_or_404(Product , pk=pk)
+
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context["admin"] = product.admin
+        
+        return context
+
+
+
+
+
+
+
+
+
         
 
 

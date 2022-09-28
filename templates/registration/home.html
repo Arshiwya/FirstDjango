@@ -56,7 +56,11 @@ Products by {{user.get_full_name}}
 					                    {% if user.is_staff %}
 					                    {% for product in object_list %}
 					                    <tr>
-					                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td> 
+					                    	
+					                    	<td><a href="{% url 'accounts:product_update' product.pk %}">{{product.title}}</a></td> 
+					                    	
+
+					                    	
 					                      <td>{{product.admin}}</td>
 					                      <td><img src="{{product.image.url}}" width="100"></td>
 					                               
@@ -66,14 +70,33 @@ Products by {{user.get_full_name}}
 					                      <td>
 					                      	{% if product.status == 'p' %}
 					                      		<span class="badge badge-success" >Published</span>
-					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
+					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.pk %}">Show product page</a>
+
+					                      	{% elif product.status == 'i' %}
+					                      	<span class="badge "  style="background-color: #c15dff;">Checking...</span>
+					                      	<a class="badge badge-warning" target="_blank" href="{% url 'products:preview' product.pk %}">Show preview page</a>
+					                      	
+
+					                      	{% elif product.status == 'b' %}
+					                      	<span class="badge badge-danger" >returned</span>
+
+					                      	<a class="badge badge-warning" target="_blank" href="{% url 'products:preview' product.pk %}">Show preview page</a>
+
+
+
+
+
+
+
 					                      	{% else %}
 
 					                      		<span class="badge badge-danger" >Draft</span>
+					                      		<a class="badge badge-warning" target="_blank" href="{% url 'products:preview' product.pk %}">Show preview page</a>
+
 
 					                      	{% endif %}
 					                      	
-					                      		<a href="{% url 'accounts:product_delete' product.slug %}" class="badge text-danger">delete this product</a>
+					                      		<a href="{% url 'accounts:product_delete' product.pk %}" class="badge badge-dark">delete this product</a>
 
 					                      	
 					                      </td>
@@ -85,7 +108,12 @@ Products by {{user.get_full_name}}
 					                    {% for product in object_list %}
 					                    {% if user.get_full_name == product.admin.get_full_name %}
 					                    <tr>
-					                    	<td><a href="{% url 'accounts:product_update' product.slug %}">{{product.title}}</a></td>    
+					               				{% if product.status in 'db'|make_list  %}
+					                    	<td><a href="{% url 'accounts:product_update' product.pk %}">{{product.title}}</a></td> 
+					                    	{% else %}
+					                    	<td>{{product.title}}</td> 
+
+					                    	{% endif %}
 					                      <td>{{product.admin}}</td>
 					                      <td><img src="{{product.image.url}}" width="100"></td>
 					                            
@@ -95,13 +123,28 @@ Products by {{user.get_full_name}}
 					                      <td>
 					                      	{% if product.status == 'p' %}
 					                      		<span class="badge badge-success" >Published</span>
-					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.slug %}">Show product page</a>
+					                      		<a class="badge badge-primary" target="_blank" href="{% url 'products:single_product' product.pk %}">Show product page</a>
+
+					                      	{% elif product.status == 'i' %}
+					                      	<span class="badge " style="background-color: #c15dff;" >Checking...</span>
+					                      	
+					                      	{% elif product.status == 'b' %}
+					                      	<span class="badge badge-danger" >returned</span>
+
+					                      	<a class="badge badge-warning" target="_blank" href="{% url 'products:preview' product.pk %}">Show preview page</a>
+
+
+
 
 					                      	{% else %}
 
 					                      		<span class="badge badge-danger" >Draft</span>
+					                      		<a class="badge badge-warning" target="_blank" href="{% url 'products:preview' product.pk %}">Show preview page</a>
+
+
 
 					                      	{% endif %}
+
 
 					                      	
 

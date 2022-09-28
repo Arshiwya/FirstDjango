@@ -39,10 +39,10 @@ class FormValidMixin():
 
 class AdminAccessMixin():
 
-	def dispatch(self, request,slug,*args, **kwargs):
-		product = get_object_or_404(Product , slug = slug)
+	def dispatch(self, request,pk,*args, **kwargs):
+		product = get_object_or_404(Product , pk = pk)
 
-		if product.admin == request.user  or request.user.is_superuser:
+		if product.admin == request.user and product.status in ['d' , 'b']   or request.user.is_superuser :
 			return super().dispatch(request, *args, **kwargs)
 
 		else:
